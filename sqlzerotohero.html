@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>From Zero to Database Hero: A Beginner's Journey into SQL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f5f7fa, #e4ebf5);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #0073bb;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            color: #fff !important;
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        header h3 {
+            color: #3ee6ff !important;
+            margin: 0.5rem 0 0 0;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #0073bb;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            margin-top: 2rem;
+            border-bottom: 2px solid #0073bb;
+            padding-bottom: 0.5rem;
+        }
+
+        ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .agenda-list {
+            margin-bottom: 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            background: #0073bb;
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            background: #005a9c;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .diff-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .diff-table th,
+        .diff-table td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        .diff-table th {
+            background: #e4ebf5;
+            color: #0073bb;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 1rem;
+            font-family: monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            background: #e7f3ff;
+            padding: 1rem;
+            border-left: 4px solid #0073bb;
+            margin: 1rem 0;
+        }
+
+        .operator-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .operator-table th,
+        .operator-table td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        .operator-table th {
+            background: #e4ebf5;
+            color: #0073bb;
+        }
+
+        .thank-you {
+            text-align: center;
+            background: #0073bb;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .author {
+            text-align: center;
+            font-style: italic;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .practice-links {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .practice-links a {
+            color: #0073bb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .example-box {
+            background: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .tip-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .sql-result {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .data-visual {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>From Zero to Database Hero: A Beginner's Journey into SQL</h1>
+        <h3 style="color: #3ee6ff; font-weight: bold; margin-top: 0;">Unlocking the Power of Databases, One Query at a
+            Time</h3>
+        <p style="color: #fff; margin-top: 1rem; font-style: italic;"><strong>By <a
+                    href="https://github.com/data-abhishek" target="_blank"
+                    style="color: #3ee6ff; text-decoration: none;">Abhishek Anand</a></strong></p>
+    </header>
+    <div class="container">
+        <h2>Agenda</h2>
+        <ul class="agenda-list">
+            <li>What is Data?</li>
+            <li>Managing Data</li>
+            <li>DBMS Concepts</li>
+            <li>Introduction to SQL</li>
+            <li>SQL Hands-on</li>
+            <li>Advanced SQL Concepts</li>
+            <li>Database Design & Normalization</li>
+            <li>Views, Stored Procedures & Functions</li>
+            <li>Performance Optimization</li>
+            <li>Real-world Projects</li>
+        </ul>
+
+        <div class="section">
+            <h2>What is Data?</h2>
+            <p>
+                Data refers to raw facts, figures, symbols, or statistics collected together for analysis, reference, or
+                processing. It has no meaning on its own until it is organized or interpreted.
+                Data can exist in many forms — numbers, words, measurements, observations, descriptions, images, audio,
+                and videos.
+            </p>
+
+            <div class="data-visual">
+                <h4>Data → Information → Knowledge → Wisdom</h4>
+                <p style="font-size: 1.1em; color: #666;">
+                    📊 Raw Data → 📈 Processed Information → 🧠 Applied Knowledge → 💡 Actionable Wisdom
+                </p>
+            </div>
+
+            <div class="example-box">
+                <strong>Real-world Example:</strong>
+                <ul>
+                    <li><strong>Data:</strong> Temperature readings: 25°C, 30°C, 28°C</li>
+                    <li><strong>Information:</strong> Average temperature this week is 27.7°C</li>
+                    <li><strong>Knowledge:</strong> This temperature range is ideal for plant growth</li>
+                    <li><strong>Wisdom:</strong> Schedule watering based on temperature patterns</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Different Types of Data</h2>
+            <ul>
+                <li><strong>Structured data</strong> is organized neatly into rows and columns, usually stored in
+                    databases like SQL. It follows a fixed model, making it easy to search, retrieve, and analyze.
+                    Examples include customer databases and spreadsheets.</li>
+                <li><strong>Unstructured data</strong> is data without a predefined format, like text files, images,
+                    videos, or social media posts.</li>
+                <li><strong>Semi-structured data</strong> has some organizational structure but not as rigid as
+                    structured data. It often uses tags or markers (like in JSON or XML files) to separate data
+                    elements, making it easier to analyze than purely unstructured data.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>What is a Database?</h2>
+            <p>
+                A database is an organized collection of data that can be easily accessed, managed, and updated. It
+                allows you to store, retrieve, modify, and delete data efficiently.
+                Databases are used to handle large amounts of information in a structured way.
+                For example, a school might have a database to store student records, or a bank uses a database to
+                manage customer accounts.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Types of Database</h2>
+            <ul>
+                <li>Relational Database</li>
+                <li>Non-Relational Database</li>
+                <li>Distributed Database</li>
+                <li>Object-oriented Database</li>
+                <li>Hierarchical Database</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>The Two Important Databases</h2>
+            <h3>Relational Database</h3>
+            <p>
+                A relational database is a type of database that stores data in tables, which consist of rows and
+                columns. Each table represents a different entity (such as customers, products, or orders), and the
+                columns represent the attributes of those entities. The rows store the actual data.<br>
+                Relational databases use structured query language (SQL) to manage and manipulate the data. The
+                relationships between tables are established using keys, where a primary key uniquely identifies each
+                row in a table, and foreign keys link rows across different tables.
+            </p>
+            <h3>Non-Relational Database</h3>
+            <p>
+                A non-relational database (also known as NoSQL database) is a type of database that does not use the
+                traditional table-based relational model for data storage. Instead, non-relational databases use a
+                variety of data models that allow for more flexibility and scalability, making them particularly useful
+                for handling large volumes of diverse, unstructured, or semi-structured data.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Difference Between Relational and Non-Relational Databases</h2>
+            <table class="diff-table">
+                <tr>
+                    <th>Relational Database</th>
+                    <th>Non-Relational Database</th>
+                </tr>
+                <tr>
+                    <td>Stores data in tables (rows & columns)</td>
+                    <td>Uses flexible data models (documents, key-value, graph, etc.)</td>
+                </tr>
+                <tr>
+                    <td>Uses SQL for queries</td>
+                    <td>Uses various query languages (MongoDB, Cassandra, etc.)</td>
+                </tr>
+                <tr>
+                    <td>Best for structured data and complex relationships</td>
+                    <td>Best for unstructured/semi-structured data and scalability</td>
+                </tr>
+                <tr>
+                    <td>Examples: MySQL, PostgreSQL, Oracle</td>
+                    <td>Examples: MongoDB, Cassandra, Redis</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>History of Database</h2>
+            <p>
+                Before databases, data was often stored in flat files or manual records. These were simple text-based
+                files or paper-based records that lacked structure and made it difficult to perform efficient searches,
+                updates, or data management. As data grew, the need for more efficient ways of storing and retrieving it
+                became apparent.
+            </p>
+            <ul>
+                <li><strong>1970:</strong> Edgar F. Codd introduced the relational model for databases. This model
+                    allowed easier querying and management of data using SQL, which became the standard for interacting
+                    with relational databases.</li>
+                <li><strong>IBM's System R (1970s):</strong> One of the first implementations of the relational model,
+                    used to prove the viability of Codd's ideas. It led to the development of commercial relational
+                    database systems.</li>
+                <li><strong>SQL (1970s):</strong> Developed to interact with relational databases, enabling users to
+                    query, insert, update, and delete data using a standard language. SQL soon became the industry
+                    standard for relational databases.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Disadvantages of File-Based System</h2>
+            <p>Data is stored in flat files, often in formats like CSV, TXT, or custom formats. These systems don't have
+                a predefined structure, and there is no central way to define relationships between data.</p>
+            <ul>
+                <li><strong>Data Integrity Issues:</strong> Data integrity can be difficult to maintain, as there are no
+                    built-in constraints. Without strict rules, data can be inconsistent, redundant, or error-prone.
+                </li>
+                <li><strong>Complex Querying:</strong> Querying in file-based systems is often done manually by
+                    searching through the file. Complex searches, joins, and data analysis require custom scripts or
+                    manual effort, which can be time-consuming and error-prone.</li>
+                <li><strong>Data Redundancy:</strong> Data redundancy is common, as files may store the same information
+                    in multiple places, leading to inefficient storage and possible data inconsistencies.</li>
+                <li><strong>Backup and Recovery:</strong> Backing up file-based systems involves copying the files, and
+                    recovery can be slow and cumbersome. There is no built-in support for data recovery in case of
+                    failure.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Database Management System (DBMS)</h2>
+            <p>
+                A Database Management System (DBMS) is software that facilitates the creation, management, and
+                manipulation of databases. It acts as an intermediary between users and databases, enabling efficient
+                storage, retrieval, and management of data. DBMSs are designed to provide a systematic and structured
+                way to store data, ensuring that it is easily accessible, secure, and consistent.
+            </p>
+            <ul>
+                <li><strong>Data Definition:</strong> A DBMS allows users to define the structure of the data, including
+                    the creation of tables, relationships, constraints, and indexes. This is usually done using a Data
+                    Definition Language (DDL).</li>
+                <li><strong>Data Manipulation:</strong> The DBMS supports data manipulation operations such as
+                    inserting, updating, deleting, and retrieving data. This is typically done using a Data Manipulation
+                    Language (DML).</li>
+                <li><strong>Security:</strong> DBMS enforce security measures, including access control mechanisms, to
+                    ensure that only authorized users can access or modify the data. Permissions are granted to users
+                    based on their roles.</li>
+                <li><strong>Data Integrity:</strong> A DBMS ensures that the data is accurate and consistent through the
+                    use of constraints such as primary keys, foreign keys, and unique constraints. This prevents data
+                    anomalies like duplication and inconsistency.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>SQL (Structured Query Language)</h2>
+            <p>
+                SQL (Structured Query Language) is a standard programming language used to manage and manipulate
+                relational databases. It is used to interact with relational database management systems (RDBMS) such as
+                MySQL, PostgreSQL, Oracle, Microsoft SQL Server, and many others. SQL allows users to perform various
+                tasks related to database management, including data retrieval, insertion, updating, and deletion.
+            </p>
+
+            <h3>Data Definition Language (DDL)</h3>
+            <ul>
+                <li><strong>CREATE:</strong> Defines a new database object (e.g., table)</li>
+                <li><strong>ALTER:</strong> Modifies an existing database object</li>
+                <li><strong>DROP:</strong> Deletes an existing database object</li>
+            </ul>
+
+            <h3>Data Manipulation Language (DML)</h3>
+            <ul>
+                <li><strong>SELECT:</strong> Retrieves data from a database</li>
+                <li><strong>INSERT:</strong> Adds new records to a table</li>
+                <li><strong>UPDATE:</strong> Modifies existing data in a table</li>
+                <li><strong>DELETE:</strong> Removes records from a table</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Different Types of Keys in SQL</h2>
+            <ul>
+                <li><strong>Primary Key:</strong> A primary key is a column or a combination of columns in a database
+                    table that uniquely identifies each row in that table. It is used to ensure that no two records have
+                    the same value in the primary key field.</li>
+                <li><strong>Unique Key:</strong> A unique key is a constraint that ensures all values in a column or
+                    group of columns are distinct across the table and allows one null value.</li>
+                <li><strong>Foreign Key:</strong> A foreign key is a column or set of columns in one table that refers
+                    to the primary key in another table, used to maintain referential integrity between the two tables.
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Data Types in SQL</h2>
+            <p>
+                Data types in databases specify the type of data that a column can hold. They help ensure data
+                consistency, integrity, and efficient storage and retrieval. Choosing the correct data type is essential
+                for proper database design and performance.
+            </p>
+
+            <h3>Common Data Types used in SQL</h3>
+            <ul>
+                <li><strong>INT:</strong> Stores whole numbers without decimals</li>
+                <li><strong>FLOAT:</strong> Stores decimal values</li>
+                <li><strong>VARCHAR(n):</strong> Stores variable-length string of maximum n size</li>
+                <li><strong>DATETIME:</strong> Stores date and time combined</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>Software for Hands-on:</strong> SSMS - SQL Server Management Studio
+            </div>
+
+            <h3>Constraints in SQL</h3>
+            <p>Constraints are rules enforced on data columns to ensure data integrity and accuracy.</p>
+            <ul>
+                <li><strong>NOT NULL:</strong> Ensures a column cannot have empty values</li>
+                <li><strong>PRIMARY KEY:</strong> Uniquely identifies each record</li>
+                <li><strong>FOREIGN KEY:</strong> Links two tables together</li>
+                <li><strong>UNIQUE:</strong> Ensures all values in a column are different</li>
+                <li><strong>CHECK:</strong> Ensures values meet a specific condition</li>
+                <li><strong>DEFAULT:</strong> Sets a default value when no value is specified</li>
+            </ul>
+
+            <div class="example-box">
+                <strong>Example with Constraints:</strong>
+                <div class="code-block">CREATE TABLE Students (
+                    student_id INT PRIMARY KEY,
+                    name VARCHAR(100) NOT NULL,
+                    email VARCHAR(100) UNIQUE,
+                    age INT CHECK (age >= 18),
+                    enrollment_date DATE DEFAULT GETDATE()
+                    );</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>SQL Hands-on</h2>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong> Always backup your database before making changes, especially when using
+                DROP or DELETE commands!
+            </div>
+
+            <h3>How to create a database:</h3>
+            <div class="code-block">CREATE DATABASE Projectdb;</div>
+
+            <h3>To create a Table:</h3>
+            <div class="code-block">CREATE TABLE table_name(
+                col_1 INT,
+                col_2 varchar(100),
+                col_3 varchar(50)
+                );</div>
+
+            <h3>Insert data into Table:</h3>
+            <div class="code-block">INSERT INTO table_name VALUES (1, "string1", "string2");</div>
+
+            <h3>More Insert Examples:</h3>
+            <div class="code-block">-- Insert specific columns
+                INSERT INTO Students (name, email, age)
+                VALUES ('John Doe', 'john@email.com', 20);
+
+                -- Insert multiple rows
+                INSERT INTO Students (name, email, age) VALUES
+                ('Alice Smith', 'alice@email.com', 22),
+                ('Bob Johnson', 'bob@email.com', 21);</div>
+
+            <h3>Update data in Table:</h3>
+            <div class="code-block">UPDATE table_name
+                SET col_2 = 'new_value'
+                WHERE col_1 = 1;</div>
+
+            <div class="warning-box">
+                <strong>⚠️ Warning:</strong> Always use WHERE clause with UPDATE and DELETE to avoid modifying all rows!
+            </div>
+
+            <h3>Delete specific data:</h3>
+            <div class="code-block">DELETE FROM table_name WHERE col_1 = 1;</div>
+
+            <h3>Delete Table in Database:</h3>
+            <div class="code-block">DROP TABLE table_name;</div>
+
+            <h3>Delete Database:</h3>
+            <div class="code-block">DROP DATABASE Projectdb;</div>
+        </div>
+
+        <div class="section">
+            <h2>Clauses in SQL</h2>
+
+            <h3>SELECT</h3>
+            <p>Used to retrieve data from one or more tables in a database.</p>
+            <div class="code-block">SELECT column1, column2, ... FROM table_name;</div>
+
+            <h3>FROM</h3>
+            <p>Specifies the table from which to retrieve or delete data.</p>
+            <div class="code-block">SELECT * FROM employees;</div>
+
+            <h3>WHERE</h3>
+            <p>Filters records that meet a specific condition.</p>
+            <div class="code-block">SELECT * FROM table_name WHERE Age >= 18;</div>
+
+            <h3>GROUP BY</h3>
+            <p>Groups rows that have the same values in specified columns.</p>
+            <div class="code-block">SELECT column, AGGREGATE_FUNCTION(column) FROM table GROUP BY column;</div>
+
+            <h3>HAVING</h3>
+            <p>Filters groups created by GROUP BY based on a condition.</p>
+            <div class="code-block">SELECT column, AGGREGATE_FUNCTION(column) FROM table GROUP BY column HAVING
+                condition;</div>
+
+            <h3>ORDER BY</h3>
+            <p>Sorts the result set by one or more columns.</p>
+            <div class="code-block">SELECT column1, column2 FROM table ORDER BY column1 ASC|DESC;</div>
+
+            <h3>LIMIT / TOP</h3>
+            <p><strong>LIMIT</strong> – Used in MySQL, PostgreSQL:</p>
+            <div class="code-block">SELECT * FROM orders LIMIT 5;</div>
+
+            <p><strong>TOP</strong> – Used in SQL Server:</p>
+            <div class="code-block">SELECT TOP 5 * FROM orders;</div>
+        </div>
+
+        <div class="section">
+            <h2>SQL Operators</h2>
+
+            <h3>Arithmetic Operators</h3>
+            <table class="operator-table">
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>Addition</td>
+                    <td>SELECT 5 + 3;</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>Subtraction</td>
+                    <td>SELECT 5 - 3;</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td>Multiplication</td>
+                    <td>SELECT 5 * 3;</td>
+                </tr>
+                <tr>
+                    <td>/</td>
+                    <td>Division</td>
+                    <td>SELECT 5 / 3;</td>
+                </tr>
+                <tr>
+                    <td>%</td>
+                    <td>Modulo</td>
+                    <td>SELECT 5 % 3;</td>
+                </tr>
+            </table>
+
+            <h3>Comparison Operators</h3>
+            <table class="operator-table">
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>=</td>
+                    <td>Equal to</td>
+                </tr>
+                <tr>
+                    <td>!=, <>
+                    </td>
+                    <td>Not equal to</td>
+                </tr>
+                <tr>
+                    <td>></td>
+                    <td>Greater than</td>
+                </tr>
+                <tr>
+                    <td>
+                        << /td>
+                    <td>Less than</td>
+                </tr>
+                <tr>
+                    <td>>=</td>
+                    <td>Greater than or equal to</td>
+                </tr>
+                <tr>
+                    <td>
+                        <=< /td>
+                    <td>Less than or equal to</td>
+                </tr>
+            </table>
+
+            <h3>Logical Operators</h3>
+            <table class="operator-table">
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>AND</td>
+                    <td>Returns true if both conditions are true</td>
+                </tr>
+                <tr>
+                    <td>OR</td>
+                    <td>Returns true if either condition is true</td>
+                </tr>
+                <tr>
+                    <td>NOT</td>
+                    <td>Returns true if condition is false</td>
+                </tr>
+                <tr>
+                    <td>IN</td>
+                    <td>Returns true if value is in a list</td>
+                </tr>
+                <tr>
+                    <td>BETWEEN</td>
+                    <td>Returns true if value is within a range</td>
+                </tr>
+                <tr>
+                    <td>LIKE</td>
+                    <td>Returns true if value matches a pattern</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>SQL CASE Statements</h2>
+            <p>The CASE statement in SQL is a versatile conditional expression that enables us to incorporate
+                conditional logic directly within our queries. It allows you to return specific results based on certain
+                conditions, enabling dynamic query outputs.</p>
+
+            <div class="code-block">SELECT
+                emp_id,
+                salary,
+                CASE
+                WHEN salary > 100000 THEN 'High'
+                WHEN salary BETWEEN 50000 AND 100000 THEN 'Medium'
+                ELSE 'Low'
+                END AS Salary_Level
+                FROM employees;</div>
+        </div>
+
+        <div class="section">
+            <h2>Indexes in SQL</h2>
+            <p>An index in SQL is a database object that improves the speed of data retrieval operations on a table,
+                like an index in a book helps you quickly find a topic.</p>
+
+            <div class="code-block">CREATE INDEX IX_EmpID ON Sudish_Info(Emp_Id);</div>
+
+            <h3>Benefits of using Indexes in SQL:</h3>
+            <ul>
+                <li>Speeds up data retrieval using SELECT queries</li>
+                <li>Improves performance of WHERE, JOIN, ORDER BY, and GROUP BY clauses</li>
+                <li>Reduces disk I/O and CPU usage by narrowing data scans</li>
+                <li>Supports data integrity through UNIQUE indexes</li>
+                <li>Enhances sorting and filtering for reports and dashboards</li>
+                <li>Optimizes performance on large tables with millions of rows</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Aggregate Functions</h2>
+            <p>Aggregate functions are built-in SQL functions that process multiple rows of data and return a single
+                summarized result. They are used to perform calculations such as totals, averages, maximum values, and
+                counts, which are useful for reports, summaries, and analytics.</p>
+
+            <h3>Common Aggregate Functions:</h3>
+            <ul>
+                <li><strong>COUNT():</strong> Counts the number of rows - COUNT(column_name)</li>
+                <li><strong>SUM():</strong> Adds up all the values in a numeric column - SUM(Salary)</li>
+                <li><strong>AVG():</strong> Calculates the average of numeric columns - AVG(Age)</li>
+                <li><strong>MIN():</strong> Finds the smallest value in the column - MIN(Salary)</li>
+                <li><strong>MAX():</strong> Finds the largest value in the column - MAX(Salary)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>JOINS in SQL</h2>
+            <p>A JOIN in SQL is used to combine rows from two or more tables based on a related column between them
+                (usually a foreign key relationship). Joins allow you to query data across multiple tables as if they
+                were one.</p>
+
+            <div class="example-box">
+                <strong>Sample Tables for JOIN Examples:</strong>
+                <h4>Employees Table</h4>
+                <table class="diff-table">
+                    <tr>
+                        <th>emp_id</th>
+                        <th>name</th>
+                        <th>dept_id</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>101</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jane Smith</td>
+                        <td>102</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Bob Wilson</td>
+                        <td>NULL</td>
+                    </tr>
+                </table>
+
+                <h4>Departments Table</h4>
+                <table class="diff-table">
+                    <tr>
+                        <th>dept_id</th>
+                        <th>dept_name</th>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>Engineering</td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>Marketing</td>
+                    </tr>
+                    <tr>
+                        <td>103</td>
+                        <td>Sales</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>Types of Joins in SQL:</h3>
+
+            <h4>INNER JOIN</h4>
+            <p>Returns only the rows where there is a match in both tables.</p>
+            <div class="code-block">SELECT e.name, d.dept_name
+                FROM Employees e
+                INNER JOIN Departments d
+                ON e.dept_id = d.dept_id;</div>
+
+            <div class="sql-result">Result: John Doe - Engineering, Jane Smith - Marketing</div>
+
+            <h4>LEFT JOIN</h4>
+            <p>Returns all rows from the left table and matched rows from the right. Unmatched right-side rows return
+                NULLs.</p>
+            <div class="code-block">SELECT e.name, d.dept_name
+                FROM Employees e
+                LEFT JOIN Departments d
+                ON e.dept_id = d.dept_id;</div>
+
+            <div class="sql-result">Result: John Doe - Engineering, Jane Smith - Marketing, Bob Wilson - NULL</div>
+
+            <h4>RIGHT JOIN</h4>
+            <p>Returns all rows from the right table and matched rows from the left table. Unmatched left-side rows
+                return NULLs.</p>
+            <div class="code-block">SELECT e.name, d.dept_name
+                FROM Employees e
+                RIGHT JOIN Departments d
+                ON e.dept_id = d.dept_id;</div>
+
+            <div class="sql-result">Result: John Doe - Engineering, Jane Smith - Marketing, NULL - Sales</div>
+
+            <h4>FULL JOIN</h4>
+            <p>Returns all records from both tables. If there is a match between the tables, it returns the matched
+                rows.</p>
+            <div class="code-block">SELECT e.name, d.dept_name
+                FROM Employees e
+                FULL JOIN Departments d
+                ON e.dept_id = d.dept_id;</div>
+
+            <div class="sql-result">Result: John Doe - Engineering, Jane Smith - Marketing, Bob Wilson - NULL, NULL -
+                Sales</div>
+        </div>
+
+        <div class="section">
+            <h2>Subqueries in SQL</h2>
+            <p>A subquery is a query nested inside another query. It can be used in SELECT, INSERT, UPDATE, or DELETE
+                statements.</p>
+
+            <h3>Types of Subqueries:</h3>
+
+            <h4>Scalar Subquery (returns single value)</h4>
+            <div class="code-block">SELECT name, salary
+                FROM employees
+                WHERE salary > (SELECT AVG(salary) FROM employees);</div>
+
+            <h4>Row Subquery (returns single row)</h4>
+            <div class="code-block">SELECT * FROM employees
+                WHERE (dept_id, salary) = (SELECT dept_id, MAX(salary)
+                FROM employees
+                WHERE dept_id = 101);</div>
+
+            <h4>Table Subquery (returns multiple rows)</h4>
+            <div class="code-block">SELECT name FROM employees
+                WHERE dept_id IN (SELECT dept_id
+                FROM departments
+                WHERE location = 'New York');</div>
+
+            <div class="tip-box">
+                <strong>💡 Performance Tip:</strong> Sometimes JOINs perform better than subqueries. Test both
+                approaches for large datasets!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Window Functions</h2>
+            <p>Window functions perform calculations across a set of rows related to the current row without grouping
+                the result set.</p>
+
+            <h3>Common Window Functions:</h3>
+
+            <h4>ROW_NUMBER()</h4>
+            <div class="code-block">SELECT name, salary,
+                ROW_NUMBER() OVER (ORDER BY salary DESC) as rank
+                FROM employees;</div>
+
+            <h4>RANK() and DENSE_RANK()</h4>
+            <div class="code-block">SELECT name, salary,
+                RANK() OVER (ORDER BY salary DESC) as rank,
+                DENSE_RANK() OVER (ORDER BY salary DESC) as dense_rank
+                FROM employees;</div>
+
+            <h4>Partition By</h4>
+            <div class="code-block">SELECT name, dept_id, salary,
+                AVG(salary) OVER (PARTITION BY dept_id) as dept_avg_salary
+                FROM employees;</div>
+
+            <div class="example-box">
+                <strong>Real-world Use Case:</strong> Finding top 3 highest-paid employees in each department:
+                <div class="code-block">SELECT * FROM (
+                    SELECT name, dept_id, salary,
+                    ROW_NUMBER() OVER (PARTITION BY dept_id ORDER BY salary DESC) as rn
+                    FROM employees
+                    ) ranked
+                    WHERE rn <= 3;</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Database Design & Normalization</h2>
+                <p>Database normalization is the process of organizing data to reduce redundancy and improve data
+                    integrity.</p>
+
+                <h3>Normal Forms:</h3>
+
+                <h4>First Normal Form (1NF)</h4>
+                <ul>
+                    <li>Each column contains atomic (indivisible) values</li>
+                    <li>Each column contains values of the same type</li>
+                    <li>Each column has a unique name</li>
+                    <li>Order doesn't matter</li>
+                </ul>
+
+                <h4>Second Normal Form (2NF)</h4>
+                <ul>
+                    <li>Must be in 1NF</li>
+                    <li>No partial dependencies (non-key attributes depend on entire primary key)</li>
+                </ul>
+
+                <h4>Third Normal Form (3NF)</h4>
+                <ul>
+                    <li>Must be in 2NF</li>
+                    <li>No transitive dependencies (non-key attributes don't depend on other non-key attributes)</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Normalization Example:</strong>
+                    <h4>Unnormalized Table (Violates 1NF):</h4>
+                    <table class="diff-table">
+                        <tr>
+                            <th>student_id</th>
+                            <th>name</th>
+                            <th>course1</th>
+                            <th>course2</th>
+                            <th>instructor1</th>
+                            <th>instructor2</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>John</td>
+                            <td>Math</td>
+                            <td>Physics</td>
+                            <td>Dr. Smith</td>
+                            <td>Dr. Jones</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Alice</td>
+                            <td>Chemistry</td>
+                            <td>Biology</td>
+                            <td>Dr. Brown</td>
+                            <td>Dr. Davis</td>
+                        </tr>
+                    </table>
+
+                    <h4>Normalized Tables (3NF):</h4>
+
+                    <h5>Students Table:</h5>
+                    <table class="diff-table">
+                        <tr>
+                            <th>student_id</th>
+                            <th>name</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>John</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Alice</td>
+                        </tr>
+                    </table>
+
+                    <h5>Courses Table:</h5>
+                    <table class="diff-table">
+                        <tr>
+                            <th>course_id</th>
+                            <th>course_name</th>
+                            <th>instructor</th>
+                        </tr>
+                        <tr>
+                            <td>101</td>
+                            <td>Math</td>
+                            <td>Dr. Smith</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Physics</td>
+                            <td>Dr. Jones</td>
+                        </tr>
+                        <tr>
+                            <td>103</td>
+                            <td>Chemistry</td>
+                            <td>Dr. Brown</td>
+                        </tr>
+                        <tr>
+                            <td>104</td>
+                            <td>Biology</td>
+                            <td>Dr. Davis</td>
+                        </tr>
+                    </table>
+
+                    <h5>Enrollments Table:</h5>
+                    <table class="diff-table">
+                        <tr>
+                            <th>student_id</th>
+                            <th>course_id</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>101</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>102</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>103</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>104</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Views, Stored Procedures & Functions</h2>
+
+                <h3>Views</h3>
+                <p>A view is a virtual table based on the result of an SQL statement.</p>
+
+                <div class="code-block">CREATE VIEW high_salary_employees AS
+                    SELECT name, salary, dept_id
+                    FROM employees
+                    WHERE salary > 50000;</div>
+
+                <div class="code-block">-- Using the view
+                    SELECT * FROM high_salary_employees
+                    WHERE dept_id = 101;</div>
+
+                <h3>Stored Procedures</h3>
+                <p>Stored procedures are prepared SQL code that can be saved and reused.</p>
+
+                <div class="code-block">CREATE PROCEDURE GetEmployeesByDept(@dept_id INT)
+                    AS
+                    BEGIN
+                    SELECT name, salary
+                    FROM employees
+                    WHERE dept_id = @dept_id;
+                    END;</div>
+
+                <div class="code-block">-- Execute stored procedure
+                    EXEC GetEmployeesByDept @dept_id = 101;</div>
+
+                <h3>Functions</h3>
+                <p>Functions return a single value and can be used in SQL expressions.</p>
+
+                <div class="code-block">CREATE FUNCTION CalculateBonus(@salary DECIMAL(10,2))
+                    RETURNS DECIMAL(10,2)
+                    AS
+                    BEGIN
+                    RETURN @salary * 0.10;
+                    END;</div>
+
+                <div class="code-block">-- Using the function
+                    SELECT name, salary, dbo.CalculateBonus(salary) as bonus
+                    FROM employees;</div>
+            </div>
+
+            <div class="section">
+                <h2>Transactions & ACID Properties</h2>
+                <p>A transaction is a sequence of operations performed as a single logical unit of work.</p>
+
+                <h3>ACID Properties:</h3>
+                <ul>
+                    <li><strong>Atomicity:</strong> All operations succeed or all fail</li>
+                    <li><strong>Consistency:</strong> Database remains in valid state</li>
+                    <li><strong>Isolation:</strong> Concurrent transactions don't interfere</li>
+                    <li><strong>Durability:</strong> Committed changes are permanent</li>
+                </ul>
+
+                <h3>Transaction Control:</h3>
+                <div class="code-block">BEGIN TRANSACTION;
+
+                    UPDATE accounts SET balance = balance - 100 WHERE account_id = 1;
+                    UPDATE accounts SET balance = balance + 100 WHERE account_id = 2;
+
+                    -- If both updates successful
+                    COMMIT;
+
+                    -- If any error occurs
+                    -- ROLLBACK;</div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Important:</strong> Always use transactions for operations that modify multiple related
+                    records!
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Performance Optimization</h2>
+
+                <h3>Query Optimization Tips:</h3>
+                <ul>
+                    <li><strong>Use indexes wisely:</strong> Create indexes on frequently queried columns</li>
+                    <li><strong>Avoid SELECT *:</strong> Select only needed columns</li>
+                    <li><strong>Use LIMIT/TOP:</strong> Limit result sets when possible</li>
+                    <li><strong>Optimize JOIN conditions:</strong> Use proper indexes on join columns</li>
+                    <li><strong>Use EXISTS instead of IN:</strong> For better performance with subqueries</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Example: Query Optimization</strong>
+                    <div class="code-block">-- Slow query
+                        SELECT * FROM orders o, customers c
+                        WHERE o.customer_id = c.customer_id
+                        AND c.city = 'New York';
+
+                        -- Optimized query
+                        SELECT o.order_id, o.order_date, c.name
+                        FROM orders o
+                        INNER JOIN customers c ON o.customer_id = c.customer_id
+                        WHERE c.city = 'New York'
+                        LIMIT 100;</div>
+                </div>
+
+                <h3>Execution Plans</h3>
+                <div class="code-block">-- View execution plan
+                    EXPLAIN SELECT * FROM employees WHERE dept_id = 101;
+
+                    -- In SQL Server
+                    SET STATISTICS IO ON;
+                    SELECT * FROM employees WHERE dept_id = 101;</div>
+            </div>
+
+            <div class="section">
+                <h2>Real-world SQL Projects</h2>
+
+                <h3>Project 1: E-commerce Database</h3>
+                <div class="code-block">-- Create tables for an e-commerce system
+                    CREATE TABLE customers (
+                    customer_id INT PRIMARY KEY,
+                    name VARCHAR(100) NOT NULL,
+                    email VARCHAR(100) UNIQUE,
+                    created_date DATE DEFAULT GETDATE()
+                    );
+
+                    CREATE TABLE products (
+                    product_id INT PRIMARY KEY,
+                    name VARCHAR(100) NOT NULL,
+                    price DECIMAL(10,2),
+                    category VARCHAR(50)
+                    );
+
+                    CREATE TABLE orders (
+                    order_id INT PRIMARY KEY,
+                    customer_id INT,
+                    order_date DATE DEFAULT GETDATE(),
+                    total_amount DECIMAL(10,2),
+                    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+                    );
+
+                    CREATE TABLE order_items (
+                    order_id INT,
+                    product_id INT,
+                    quantity INT,
+                    price DECIMAL(10,2),
+                    PRIMARY KEY (order_id, product_id),
+                    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+                    FOREIGN KEY (product_id) REFERENCES products(product_id)
+                    );</div>
+
+                <h3>Sample Data:</h3>
+
+                <h4>Customers Table:</h4>
+                <table class="diff-table">
+                    <tr>
+                        <th>customer_id</th>
+                        <th>name</th>
+                        <th>email</th>
+                        <th>created_date</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>John Smith</td>
+                        <td>john@email.com</td>
+                        <td>2024-01-15</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Sarah Wilson</td>
+                        <td>sarah@email.com</td>
+                        <td>2024-02-20</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Mike Johnson</td>
+                        <td>mike@email.com</td>
+                        <td>2024-03-10</td>
+                    </tr>
+                </table>
+
+                <h4>Products Table:</h4>
+                <table class="diff-table">
+                    <tr>
+                        <th>product_id</th>
+                        <th>name</th>
+                        <th>price</th>
+                        <th>category</th>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>Laptop</td>
+                        <td>999.99</td>
+                        <td>Electronics</td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>Mouse</td>
+                        <td>25.50</td>
+                        <td>Electronics</td>
+                    </tr>
+                    <tr>
+                        <td>103</td>
+                        <td>Desk Chair</td>
+                        <td>149.99</td>
+                        <td>Furniture</td>
+                    </tr>
+                    <tr>
+                        <td>104</td>
+                        <td>Monitor</td>
+                        <td>299.99</td>
+                        <td>Electronics</td>
+                    </tr>
+                </table>
+
+                <h4>Orders Table:</h4>
+                <table class="diff-table">
+                    <tr>
+                        <th>order_id</th>
+                        <th>customer_id</th>
+                        <th>order_date</th>
+                        <th>total_amount</th>
+                    </tr>
+                    <tr>
+                        <td>1001</td>
+                        <td>1</td>
+                        <td>2024-07-15</td>
+                        <td>1025.49</td>
+                    </tr>
+                    <tr>
+                        <td>1002</td>
+                        <td>2</td>
+                        <td>2024-07-20</td>
+                        <td>449.98</td>
+                    </tr>
+                    <tr>
+                        <td>1003</td>
+                        <td>1</td>
+                        <td>2024-08-01</td>
+                        <td>149.99</td>
+                    </tr>
+                </table>
+
+                <h4>Order Items Table:</h4>
+                <table class="diff-table">
+                    <tr>
+                        <th>order_id</th>
+                        <th>product_id</th>
+                        <th>quantity</th>
+                        <th>price</th>
+                    </tr>
+                    <tr>
+                        <td>1001</td>
+                        <td>101</td>
+                        <td>1</td>
+                        <td>999.99</td>
+                    </tr>
+                    <tr>
+                        <td>1001</td>
+                        <td>102</td>
+                        <td>1</td>
+                        <td>25.50</td>
+                    </tr>
+                    <tr>
+                        <td>1002</td>
+                        <td>103</td>
+                        <td>1</td>
+                        <td>149.99</td>
+                    </tr>
+                    <tr>
+                        <td>1002</td>
+                        <td>104</td>
+                        <td>1</td>
+                        <td>299.99</td>
+                    </tr>
+                    <tr>
+                        <td>1003</td>
+                        <td>103</td>
+                        <td>1</td>
+                        <td>149.99</td>
+                    </tr>
+                </table>
+
+                <h3>Common Business Queries:</h3>
+
+                <div class="code-block">-- Top 5 customers by total spending
+                    SELECT c.name, SUM(o.total_amount) as total_spent
+                    FROM customers c
+                    JOIN orders o ON c.customer_id = o.customer_id
+                    GROUP BY c.customer_id, c.name
+                    ORDER BY total_spent DESC
+                    LIMIT 5;</div>
+
+                <div class="sql-result">Result:
+                    John Smith - $1175.48
+                    Sarah Wilson - $449.98
+                    Mike Johnson - $0.00</div>
+
+                <div class="code-block">-- Monthly sales report
+                    SELECT
+                    YEAR(order_date) as year,
+                    MONTH(order_date) as month,
+                    COUNT(*) as total_orders,
+                    SUM(total_amount) as revenue
+                    FROM orders
+                    GROUP BY YEAR(order_date), MONTH(order_date)
+                    ORDER BY year DESC, month DESC;</div>
+
+                <div class="sql-result">Result:
+                    2024 - 08 - 1 orders - $149.99
+                    2024 - 07 - 2 orders - $1475.47</div>
+
+                <div class="code-block">-- Products never ordered
+                    SELECT p.name
+                    FROM products p
+                    LEFT JOIN order_items oi ON p.product_id = oi.product_id
+                    WHERE oi.product_id IS NULL;</div>
+
+                <div class="sql-result">Result: (No products never ordered in this example)</div>
+
+                <div class="tip-box">
+                    <strong>💡 Practice Project Ideas:</strong>
+                    <ul>
+                        <li>Library Management System</li>
+                        <li>Hospital Management System</li>
+                        <li>Student Information System</li>
+                        <li>Inventory Management System</li>
+                        <li>Social Media Database</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Where to Practice SQL</h2>
+
+                <div class="practice-links">
+                    <h3>Want to learn SQL in full depth?</h3>
+                    <p><strong>W3Schools:</strong> <a href="https://www.w3schools.com/sql/"
+                            target="_blank">https://www.w3schools.com/sql/</a></p>
+
+                    <h3>Popular Platforms for practicing SQL questions:</h3>
+                    <p><strong>LeetCode:</strong> <a href="https://leetcode.com/studyplan/top-sql-50/"
+                            target="_blank">https://leetcode.com/studyplan/top-sql-50/</a></p>
+                    <p><strong>HackerRank:</strong> <a href="https://www.hackerrank.com/domains/sql"
+                            target="_blank">https://www.hackerrank.com/domains/sql</a></p>
+                </div>
+            </div>
+
+            <a class="back-link" href="new.html">← Back to Home</a>
+        </div>
+</body>
+
+</html>
